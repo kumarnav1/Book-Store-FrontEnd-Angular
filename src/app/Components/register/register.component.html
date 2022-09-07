@@ -14,7 +14,13 @@
                                 <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="userModel.lastName"> </div><br>
 
                         <div class="form-input"> <i class="fa fa-envelope"></i> <input type="text"
-                                        class="form-control" placeholder="Email" [(ngModel)]="userModel.email"> </div><br>
+                                        class="form-control" placeholder="Email" [(ngModel)]="userModel.email"  > </div><br>
+
+
+                      <ng-template [ngIf]="this.status==1">
+                        <h6 style="color: red;margin-right: 75mm;"> This Email id is Already been Taken. </h6>
+                        </ng-template> 
+                        
 
                         <div class="form-input"> <i class="fa fa-user"></i> <input type="text"
                                         class="form-control" placeholder="Password" [(ngModel)]="userModel.password"> </div><br>
@@ -38,7 +44,6 @@
 
                             <button class="btn btn-outline-light btn-lg px-5" type="submit"
                                     (click)="onClickSaveModelRedirectToHome()">Submit</button>
-
                             <div class="text-center mt-4"> <span>Already a member ? </span> <button class="astext"
                                             (click)="loginPage()">login</button><br><br>
                             </div>

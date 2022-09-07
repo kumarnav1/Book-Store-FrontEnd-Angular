@@ -32,4 +32,13 @@ export class ForgotpasswordComponent implements OnInit {
   }
 }
 
+onClickSignUp() {
+  this.route.navigate(["register"]);
+}
+
+
+onClickLogin() {
+  this.route.navigate(["login"]);
+}
+
 }

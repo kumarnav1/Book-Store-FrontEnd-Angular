@@ -10,7 +10,7 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-
+  status!: number;
   constructor(private router: Router, private service: UserService) { }
 
   userModel: UserRegistrationModel = new UserRegistrationModel("", "", "", "","", new Date,new Date);
@@ -20,10 +20,18 @@ export class RegisterComponent implements OnInit {
 
   onClickSaveModelRedirectToHome() {
     this.service.registerUser(this.userModel).subscribe((getData: any) => {
-    });
-    console.log(this.userModel);
+      console.log(getData.data);
+    this.status = getData.data;
+    if(this.status == 1){
+      alert("This Email id has Already been Taken. Enter new Email Id and try Again.");
+    }
+   if(this.status == 0){
+    alert("Registraion done. Please Check you mail for otp and Verify the Account.");
     this.router.navigate(["verfication"]);
   }
+    });
+  }
+
 
   loginPage() {
     this.router.navigate(["login"]);
